@@ -12,7 +12,7 @@ const modelo = () => {
     const estudio = prompt('qual a desenvolvedora?: ');
     let sequencia = -1;
     if (listar()) {
-        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia');
+        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia') - 1;
     }
     if (
         nome != '' &&
@@ -21,7 +21,7 @@ const modelo = () => {
         duracao > 0 &&
         preco == 0 &&
         estudio != '' &&
-        sequencia >= 0 &&
+        sequencia >= -1 &&
         (sequencia < jogos.length || jogos.length == 0)
     ) {
         return {
@@ -69,9 +69,9 @@ const atualizar = () => {
     if (!listar()) {
         return;
     }
-    const indice = prompt(`Qual o indice que deseja atualizar?: `);
+    const indice = prompt(`Qual o indice que deseja atualizar?: `)-1;
     const jogo = modelo();
-    if (validarIndice(indice)) {
+    if (jogo!=undefined && validarIndice(indice)) {
         jogos[indice] = jogo;
         console.log('jogo atualizado com sucesso');
     } else {
