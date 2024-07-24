@@ -2,6 +2,8 @@ const prompt = require('prompt-sync')();
 
 const jogos = [];
 
+const validarIndice = (indice) => indice >= 0 && indice < jogos.length;
+
 const modelo = () => {
     const nome = prompt('nome do jogo: ');
     const anoLancamento = prompt('em que ano foi lançado?: ');
@@ -69,7 +71,7 @@ const atualizar = () => {
     }
     const indice = prompt(`Qual o indice que deseja atualizar?: `);
     const jogo = modelo();
-    if (indice >= 0 && indice < jogos.length) {
+    if (validarIndice(indice)) {
         jogos[indice] = jogo;
         console.log('jogo atualizado com sucesso');
     } else {
@@ -77,33 +79,16 @@ const atualizar = () => {
     }
 };
 
-//     let nome = prompt('nome do jogo: ');
-//     let anoLancamento = prompt('em que ano foi lançado?: ');
-//     let duracao = prompt('qual a duração média?: ');
-//     let preco = prompt('qual o preço do jogo?: ');
-//     let estudio = prompt('qual a desenvolvedora?: ');
-//     let sequencia = prompt('qual a sequencia do jogo?: ');
+const remover = () => {
+    if (!listar()) {
+        return;
+    }
+    const indice = prompt(`Qual o indice que deseja remover?: `) - 1;
 
-//     if (
-//         nome != '' &&
-//         anoLancamento >= 1962 &&
-//         anoLancamento <= 2024 &&
-//         duracao > 0 &&
-//         preco == 0 &&
-//         estudio != '' &&
-//         sequencia > 0 &&
-//         (sequencia < jogos.length || jogos.length == 0)
-//     ) {
-//         jogos.push({
-//             nome,
-//             anoLancamento,
-//             duracao,
-//             preco,
-//             estudio,
-//             sequencia,
-//         });
-//         console.log('jogo cadastrado com sucesso');
-//     } else {
-//         console.log('Dados invalidos');
-//     }
-// };
+    if (validarIndice(indice)) {
+        jogos.splice(indice, 1);
+        console.log('jogo removido com sucesso');
+    } else {
+        console.log('falha na remoção');
+    }
+};
