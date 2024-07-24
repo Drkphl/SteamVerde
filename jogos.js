@@ -69,9 +69,9 @@ const atualizar = () => {
     if (!listar()) {
         return;
     }
-    const indice = prompt(`Qual o indice que deseja atualizar?: `)-1;
+    const indice = prompt(`Qual o indice que deseja atualizar?: `) - 1;
     const jogo = modelo();
-    if (jogo!=undefined && validarIndice(indice)) {
+    if (jogo != undefined && validarIndice(indice)) {
         jogos[indice] = jogo;
         console.log('jogo atualizado com sucesso');
     } else {
@@ -91,4 +91,11 @@ const remover = () => {
     } else {
         console.log('falha na remoção');
     }
+};
+
+module.exports = {
+    criar,
+    atualizar,
+    listar,
+    remover,
 };
