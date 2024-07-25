@@ -12,7 +12,7 @@ const modelo = () => {
     const estudio = prompt('qual a desenvolvedora?: ');
     let sequencia = -1;
     if (listar()) {
-        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia') - 1;
+        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia');
     }
     if (
         nome != '' &&
