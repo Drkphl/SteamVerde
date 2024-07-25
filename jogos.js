@@ -11,8 +11,8 @@ const modelo = () => {
     const preco = prompt('qual o preço do jogo?: ');
     const estudio = prompt('qual a desenvolvedora?: ');
     let sequencia = -1;
-    if (listar()) {
-        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia') - 1;
+    if (listar() && jogos.length != 1 && indice != 0) {
+        sequencia = prompt('qual a sequencia do jogo? Digite 0 para não há sequencia');
     }
     if (
         nome != '' &&
@@ -70,7 +70,7 @@ const atualizar = () => {
         return;
     }
     const indice = prompt(`Qual o indice que deseja atualizar?: `) - 1;
-    const jogo = modelo();
+    const jogo = modelo(indice);
     if (jogo != undefined && validarIndice(indice)) {
         jogos[indice] = jogo;
         console.log('jogo atualizado com sucesso');
